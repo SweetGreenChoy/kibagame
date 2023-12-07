@@ -1,0 +1,187 @@
+1. 착수 유효성 검토와 착수를 별개로 두면?
+    -이벤트 클릭의 위치?
+        -클릭이 선 => 유효성 검사(보드 테스트) => 착수
+            -구현의 위치? 마지막
+                =보드의 값만 가져와서 구현
+    -현재 이벤트 순서?
+        -클릭 => 돌이 있는가? => 유효 검토 => 착수 => 구현
+    -구현에서의 오류?  
+        -코드 사이에 wait 입력
+
+2. 착수 자체를 하나의 socket 통신으로 두면?
+    -통신이 길어질 수 있음
+        -통신용 코드와 게임용 코드를 나누면?
+            -너무 오래 걸림
+
+3. 코드를 아예 새로 짜면?
+    -너무 오래 걸림
+
+=수정 완료
+    -보드 값과 구현만 소켓처리
+
+현재 문제
+
+1. event 변수
+    -너무 많이 분포
+        -event의 대상이 되는 함수를 나누면?
+    -onclick 이벤트의 분리가 더 편할 듯
+        =PointerEvent로 분리시킴
+            -이제 함수 위치 수정
+                -왜 admit에서 board인식이 안되는걸까
+                    -boards가 array가 아니라 object라서
+                        =값 읽는 법 변경
+
+2. room code와 char choice 지웠는데 왜 연결되는거?
+    -/ws/play/null로 연결..
+        =다시 room_code와 char_choice 부여
+
+3. 세션 유지 방법
+    -close에 조건 부여
+        -항상성을 위해선 db연결 필요
+
+4. 기능 부여
+    -timer는 document의 값을 읽어서 사용
+        -혹은 값을 보내는 것으로
+            -timer를 2개로{minute, suddenDeath}
+    -계가, 한수쉼, 기권 등의 기능은 socket으로 보내기
+        -계가는 확인 후 소켓 전송
+        -기권은 기권 값 전송
+            -게임 END event 작동
+        -한수쉼 확인 후 소켓 전송
+            -수를 놓지 않더라도 moveCount올라가게
+                -서로 눌렀을 경우 END event 실행
+
+    -END event 시 작동을 안하게
+        -game status 값이 필요할 것 같음
+
+    -START 전에 READY 를 만들어서 소켓 접속 시 준비상태가 되도록
+        -확인 팝업?
+            -redirection시 확인 팝업 출력
+
+    -placeStone 조건에 popup이 없을 때도 적용
+
+5. interactive web
+    -우선은 외주업체에 맡기고 안되면 내가 진행
+        -media query 이해
+            -최소 사이즈는 container로
+
+6. gameStatus
+    -{0: 대기중, 1: 진행중, 2: 종료}
+        -대기중 = 게임을 진행중이지 않음
+            =true/false
+
+7. limit connection
+    -가장 국소적인 부분에서(game)
+        -인원을 제한하는가/관전은?
+        -플레이할 인원을 제한/db 필요?
+            =제한이 아니라 플레이어 참석 조건이 필요
+
+8. READY and START
+    -한 플레이어가 우선 진입(READY)
+        -다른 플레이어가 진입(READY)
+            -READY를 받는 순간 START를 전송
+                -START를 받을 시 게임 시작
+    =READY는 참가 확인
+        =START는 보드 청소 및 gameStatus를 true로 전환
+            -socket message가 broadcast라 불가능(심지어 자기 자신에게도)
+
+9. 나가기 수정
+    -누르자마자 '백 승리'이미지 출력
+        -확인 팝업을 추가
+            -나가기로 socket 종료 시 카운트다운 유지되도록
+
+10. 사석 제거
+    -clearBoard 진행 시 board단위에서 개수 계산(구현할 필요 X)
+        -0과 1 카운트
+            -isBlackTurn false 일 때 white의 변화
+                -countStone(bakcupBoard) - countStone(board) 가 -1 일 때
+                    -white 개수 변화가 사석
+        -chain의 값 불러내야함
+            =getChain 값이 사석값, 집값
+                -checked board
+    -변수만 잘 조절하면 가능
+        =구현 및 사석 값까지 적용
+
+Switch (event) {
+    case "START"
+        if (status === false) {
+            status = true;
+            resetBoard
+            } else {
+                status = true;
+                // return db data
+            }
+        -broadcast 구성 변경
+        -db구성 후 입장 설정
+            -최소한 resetBoard라도 작동시키게
+
+    case "MOVE"
+        =성공
+
+    case "TIMEOUT"
+
+    case "GIVEUP"
+        =성공
+
+    case "SCORE"
+        -scorer 가져와서 쓰기
+            -사석의 개수?
+                -(countStone(board) - countStone(bakcupBoard) === 1)
+                    =성공
+
+    case "PASS"
+        =성공
+            -moveCount 증가
+            -last_stone 감추기
+            -클릭 시 보드 작동 멈춤(gameStatus)
+            -클릭 후 턴 넘어감(isBlackTurn)
+
+    case "GYEGA"
+        -scorer
+}
+
+<기능>
+game 전체는 gameStatus
+turn은 isBlackTurn
+
+각자 자기 차례일 때
+(isBlackTurn === true && char_choice === "black") ||
+(isBlackTurn === false && char_choice === "white")
+
+<계가>
+1. 계가 상태와 계가 진행을 둘로 나눔
+2. 상태가 소켓으로 진행과 함께 전송(1차 계가 - 자동값)
+    -komi(덤)과 deadCount(사석) 값까지 반영
+        -결과물은 팝업창에?
+3. 진행에서 적용된 값이 마지막으로 상태에 반영(2차 계가 - 수동값)
+    -수정시 팝업값 변경
+        -
+
+<계가 신청>
+1. 계가 버튼을 클릭
+    -게임이 멈춤
+    -팝업 등장
+    -확인으로 소켓 메시지 전송
+    -메시지 수신시 팝업 등장(계가 확인)
+    -확인 시 계가모드 진입
+        -계가 진행
+        -계가 확인 팝업
+            -계가 진행에서 사석 정리
+            -정리 후 서로 확인
+                -합의 하에 게임 종료
+                -합의 취소 시 팝업 닫음
+                    -대국 재개
+            -확인 취소 시 관리자 호출(아직 구현 못함)
+    -취소 시 팝업 닫힘
+    -게임 재개
+
+<계가 점수>
+1. chain의 값들을 array에 배열
+    -chain은 어떻게 정의?
+        -chain 안의 chain 안의 chain..
+2. array.length + komi + deadCount
+
+상대 진영 안에 있는데 count가 0?
+
+사석지정을 수동으로?
+    -click시 opacity 감소(50% 정도?)
