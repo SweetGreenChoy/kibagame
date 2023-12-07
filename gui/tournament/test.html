@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>Battle Go 배틀고</title>
+    <!-- swiper 외부 라이브러리 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+    <link href="../css/reset.css" rel="stylesheet" />
+    <link href="../css/font.css" rel="stylesheet" />
+    <link href="../css/styleTest.css" rel="stylesheet" />
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/test copy.js"></script>
+    <script src="../js/swiper.js"></script>
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- header -->
+      <div id="header">
+        <h1 class="logo">
+          <a href="../index.html"><img src="../img/logo.png" /></a>
+        </h1>
+        <div class="gnb">
+          <a href="../tournament/list.html" class="active">토너먼트</a>
+          <a href="../ranking/ranking_rp.html">랭킹</a>
+          <a href="history.html">히스토리</a>
+        </div>
+        <div class="point">
+          <div class="bp"><img src="../img/icon_bp.png" />1,000,000 BP</div>
+          <div class="dia"><img src="../img/icon_dia.png" />0 D</div>
+        </div>
+      </div>
+      <!-- //header -->
+
+      <!-- container -->
+      <div id="container">
+        <!-- game_contents -->
+        <div class="play_contents">
+          <div class="box_left">
+            <!-- 바둑돌 사운드 -->
+            <audio id="soundStone">
+              <source src="../sound/sound_baduk_stone.mp3" type="audio/mpeg" />
+            </audio>
+            <audio id="soundCountStart">
+              <source src="../sound/sound_count_start.mp3" type="audio/mpeg" />
+            </audio>
+            <audio id="soundCountTen">
+              <source src="../sound/sound_count_ten.mp3" type="audio/mpeg" />
+            </audio>
+
+            <!-- 게임화면 -->
+            <div class="play_game">
+              <div class="game_inner">
+                <div class="baduk_board">
+                  <div class="board_inner" id="badukInner"></div>
+                </div>
+              </div>
+            </div>
+            <!-- 게임화면 -->
+
+            <!-- 한수쉼 -->
+            <div class="popup" id="popupGameRest">
+              <div class="popup_inner">
+                <div class="popup_tit">한수쉼</div>
+                <div class="popup_box">
+                  <!-- 한수쉼 진행 여부 확인 -->
+                  <div class="box" id="gameRestOrNot">
+                    <div class="cont_box">
+                      <div class="color_yellow">한수쉼을 하시겠습니까?</div>
+                    </div>
+                    <div class="btn_box">
+                      <a href="#" class="btn_style02" id="gameRestNoBtn"
+                        >취소</a
+                      >
+                      <a href="#" class="btn_style01" id="gameRestYesBtn"
+                        >확인</a
+                      >
+                    </div>
+                  </div>
+                  <!-- //한수쉼 진행 여부 확인 -->
+
+                  <!-- 한수쉼 완료 -->
+                  <div class="box" id="gameRestComplete">
+                    <div class="cont_box">
+                      <div class="color_yellow">상대순서로 넘어갔습니다.</div>
+                    </div>
+                    <div class="btn_box">
+                      <a href="#" class="btn_style01" id="gameRestCompleteBtn"
+                        >확인</a
+                      >
+                    </div>
+                  </div>
+                  <!-- //한수쉼 완료 -->
+                </div>
+              </div>
+            </div>
+            <!-- //한수쉼 -->
+
+            <!-- 계가신청 -->
+            <div class="popup" id="popupGameGyega">
+              <div class="popup_inner">
+                <div class="popup_tit">계가신청</div>
+                <div class="popup_box">
+                  <!-- (나의 화면) 계가 진행 여부 확인 -->
+                  <div class="box">
+                    <div class="cont_box">
+                      <div class="color_yellow">계가신청을 하시겠습니까?</div>
+                    </div>
+                    <div class="btn_box">
+                      <a href="#" class="btn_style02">취소</a>
+                      <a href="#" class="btn_style01">확인</a>
+                    </div>
+                  </div>
+                  <!-- //(나의 화면) 계가 진행 여부 확인 -->
+
+                  <!-- (나의 화면) 상대 거절 시 -->
+                  <div class="box">
+                    <div class="cont_box">
+                      <div class="color_yellow">
+                        상대방이 계가를 거절했습니다.
+                      </div>
+                    </div>
+                    <div class="btn_box">
+                      <a href="#" class="btn_style01">확인</a>
+                    </div>
+                  </div>
+                  <!-- //(나의 화면) 상대 거절 시 -->
+
+                  <!-- (상대 화면) 계가 진행 여부 확인 -->
+                  <div class="box">
+                    <div class="cont_box">
+                      <div class="color_yellow">
+                        계가신청을 동의하시겠습니까?
+                      </div>
+                    </div>
+                    <div class="btn_box">
+                      <a href="#" class="btn_style02">거절</a>
+                      <a href="#" class="btn_style01">동의</a>
+                    </div>
+                  </div>
+                  <!-- //(상대 화면) 계가 진행 여부 확인 -->
+
+                  <!-- (양자 화면) 상대 동의 시 -->
+                  <div class="box">
+                    <div class="cont_box">
+                      <div class="color_yellow">계가를 시작합니다.</div>
+                    </div>
+                    <div class="btn_box">
+                      <a href="#" class="btn_style01">확인</a>
+                    </div>
+                  </div>
+                  <!-- //(양자 화면) 상대 동의 시 -->
+
+                  <!-- (양자 화면) 최종 계가 진행 여부 -->
+                  <div class="box">
+                    <div class="cont_box">
+                      <div class="color_yellow">흑 88집 : 백 65.5집</div>
+                      <div class="color_yellow">흑 22.5집 승!!</div>
+                      <div class="color_yellow">결과에 동의하시나요?</div>
+                    </div>
+                    <div class="btn_box">
+                      <a href="#" class="btn_style02">거절</a>
+                      <a href="#" class="btn_style01">동의</a>
+                    </div>
+                  </div>
+                  <!-- //(양자 화면) 최종 계가 진행 여부 -->
+
+                  <!-- (양자 화면) 최종 계가 동의 시 -->
+                  <div class="box">
+                    <div class="cont_box">
+                      <div class="color_yellow">흑 22.5집 승!!</div>
+                      <div class="color_yellow">대국이 종료되었습니다.</div>
+                    </div>
+                    <div class="btn_box">
+                      <a href="#" class="btn_style01">확인</a>
+                    </div>
+                  </div>
+                  <!-- //(양자 화면) 최종 계가 동의 시 -->
+
+                  <!-- (양자 화면) 최종 계가 거절 시 -->
+                  <div class="box">
+                    <div class="cont_box">
+                      <div class="color_yellow">
+                        상대방이 계가에 동의하지 않았습니다. 대국으로
+                        돌아갑니다.
+                      </div>
+                    </div>
+                    <div class="btn_box">
+                      <a href="#" class="btn_style01">확인</a>
+                    </div>
+                  </div>
+                  <!-- //(양자 화면) 최종 계가 거절 시 -->
+                </div>
+              </div>
+            </div>
+            <!-- //계가신청 -->
+
+            <!-- 기권 -->
+            <div class="popup" id="popupGameOut">
+              <div class="popup_inner">
+                <div class="popup_tit">기권</div>
+                <div class="popup_box">
+                  <!-- 기권 진행 여부 확인 -->
+                  <div class="box" id="gameOutOrNot">
+                    <div class="cont_box">
+                      <div class="color_yellow">기권하시겠습니까?</div>
+                    </div>
+                    <div class="btn_box">
+                      <a href="#" class="btn_style02" id="gameOutNoBtn">취소</a>
+                      <a href="#" class="btn_style01" id="gameOutYesBtn"
+                        >확인</a
+                      >
+                    </div>
+                  </div>
+                  <!-- //기권 진행 여부 확인 -->
+
+                  <!-- 기권 완료 -->
+                  <div class="box" id="gameOutComplete">
+                    <div class="cont_box">
+                      <div class="color_yellow">백 불계승</div>
+                    </div>
+                    <div class="btn_box">
+                      <a href="#" class="btn_style01" id="gameOutCompleteBtn"
+                        >확인</a
+                      >
+                    </div>
+                  </div>
+                  <!-- //기권 완료 -->
+                </div>
+              </div>
+            </div>
+            <!-- //기권 -->
+
+            <!-- 게임 판정 -->
+            <div class="play_game_over">
+              <div class="win_box">
+                <img src="../img/img_game_win_white.png" />
+              </div>
+            </div>
+            <!-- //게임 판정 -->
+
+            <!-- 게임 종료 -->
+            <div class="popup" id="popupGameOver">
+              <div class="popup_inner">
+                <div class="popup_tit">게임 종료</div>
+                <div class="popup_box">
+                  <!-- 게임 종료 -->
+                  <div class="box on" id="gameOverComplete">
+                    <div class="cont_box">
+                      <div class="color_yellow timer timer_over">00:10</div>
+                      <div>다음 라운드로 이동하시겠습니까?</div>
+                    </div>
+                    <div class="btn_box">
+                      <a href="#" class="btn_style01" id="gameOverCompleteBtn"
+                        >확인</a
+                      >
+                    </div>
+                  </div>
+                  <!-- //게임 종료 -->
+                </div>
+              </div>
+            </div>
+            <!-- //게임 종료 -->
+          </div>
+          <script></script>
+
+          <div class="box_right">
+            <div class="play_info">
+              <div class="inner">
+                <div class="player">
+                  <div class="box">
+                    <div class="player_info">
+                      <div class="img">
+                        <img src="../img/img_profile_01.png" />
+                      </div>
+                      <div class="rank">
+                        <img src="../img/icon_rank_gold.png" />
+                      </div>
+                      <div class="id">최강바둑인공지능</div>
+                    </div>
+                    <ul class="state">
+                      <li>
+                        <div class="gubun">남은 시간</div>
+                        <div class="naeyong">
+                          <span class="timer_game black">00:00</span>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="gubun">초 읽기</div>
+                        <div class="naeyong">30초/3회</div>
+                      </li>
+                      <li>
+                        <div class="gubun">잡은 돌</div>
+                        <div class="naeyong">0개</div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="box">
+                    <div class="player_info white">
+                      <div class="img">
+                        <img src="../img/img_profile_02.png" />
+                      </div>
+                      <div class="rank">
+                        <img src="../img/icon_rank_gold.png" />
+                      </div>
+                      <div class="id">바둑아놀자</div>
+                    </div>
+                    <ul class="state">
+                      <li>
+                        <div class="gubun">남은 시간</div>
+                        <div class="naeyong">
+                          <span class="timer_game white">00:00</span>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="gubun">초 읽기</div>
+                        <div class="naeyong">30초/3회</div>
+                      </li>
+                      <li>
+                        <div class="gubun">잡은 돌</div>
+                        <div class="naeyong">0개</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- game info -->
+                <div class="game_info">
+                  <!-- tab -->
+                  <ul class="tab">
+                    <li class="on info_tab">대회정보</li>
+                    <li class="part_tab">참여인원</li>
+                  </ul>
+                  <!-- //tab -->
+
+                  <!-- tabcont -->
+                  <div class="tabcont">
+                    <!-- 대회정보 -->
+                    <div class="box">
+                      <div class="subject">골드 랭크 SPEED 토너먼트 (1차)</div>
+                      <div class="info_box scroll">
+                        <ul class="list">
+                          <li>
+                            <div class="gubun">토너먼트 유형</div>
+                            <div class="naeyong">SPEED 토너먼트</div>
+                          </li>
+                          <li>
+                            <div class="gubun">참여인원</div>
+                            <div class="naeyong">8명</div>
+                          </li>
+                          <li>
+                            <div class="gubun">대회일정</div>
+                            <div class="naeyong">2023-10-19 15:00 시작</div>
+                          </li>
+                          <li>
+                            <div class="gubun">참가 BP</div>
+                            <div class="naeyong">10,000 BP</div>
+                          </li>
+                          <li>
+                            <div class="gubun">제한시간</div>
+                            <div class="naeyong">30초 / 3회</div>
+                          </li>
+                          <li>
+                            <div class="gubun">총 상금</div>
+                            <div class="naeyong">120,000 BP</div>
+                          </li>
+                          <li>
+                            <div class="gubun">1등 상금</div>
+                            <div class="naeyong">84,000 BP</div>
+                          </li>
+                          <li>
+                            <div class="gubun">2등 상금</div>
+                            <div class="naeyong">36,000 BP</div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- //대회정보 -->
+
+                    <!-- 참여인원 -->
+                    <div class="box">
+                      <div class="subject">골드 랭크 SPEED 토너먼트 (1차)</div>
+                      <div class="part_box scroll">
+                        <div class="part_list">
+                          <ul>
+                            <li class="part_num">1</li>
+                            <li class="part_id">아이디</li>
+                            <li class="part_rank">
+                              <img src="../img/icon_rank_gold.png" />
+                            </li>
+                          </ul>
+                          <ul>
+                            <li class="part_num">2</li>
+                            <li class="part_id">아이디</li>
+                            <li class="part_rank">
+                              <img src="../img/icon_rank_gold.png" />
+                            </li>
+                          </ul>
+                          <ul>
+                            <li class="part_num">3</li>
+                            <li class="part_id">아이디</li>
+                            <li class="part_rank">
+                              <img src="../img/icon_rank_gold.png" />
+                            </li>
+                          </ul>
+                          <ul>
+                            <li class="part_num">4</li>
+                            <li class="part_id">아이디</li>
+                            <li class="part_rank">
+                              <img src="../img/icon_rank_gold.png" />
+                            </li>
+                          </ul>
+                          <ul>
+                            <li class="part_num">5</li>
+                            <li class="part_id">아이디</li>
+                            <li class="part_rank">
+                              <img src="../img/icon_rank_gold.png" />
+                            </li>
+                          </ul>
+                          <ul>
+                            <li class="part_num">6</li>
+                            <li class="part_id">아이디</li>
+                            <li class="part_rank">
+                              <img src="../img/icon_rank_gold.png" />
+                            </li>
+                          </ul>
+                          <ul>
+                            <li class="part_num">7</li>
+                            <li class="part_id">아이디</li>
+                            <li class="part_rank">
+                              <img src="../img/icon_rank_gold.png" />
+                            </li>
+                          </ul>
+                          <ul>
+                            <li class="part_num">8</li>
+                            <li class="part_id">아이디</li>
+                            <li class="part_rank">
+                              <img src="../img/icon_rank_gold.png" />
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <!-- //참여인원 -->
+                    </div>
+                    <!-- //tabcont -->
+                  </div>
+                </div>
+                <!-- //game info -->
+
+                <div class="btn">
+                  <div class="btn_play_game">
+                    <a href="#" class="btn_style03 btn_game_rest">한수쉼</a>
+                    <a href="#" class="btn_style03">계가신청</a>
+                    <a href="#" class="btn_style03 btn_game_out">기권</a>
+                  </div>
+                  <div class="btn_play_exit">
+                    <a href="#" class="btn_style02 btn_game_exit">나가기</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- //game_contents -->
+      </div>
+      <!-- //container -->
+    </div>
+  </body>
+</html>

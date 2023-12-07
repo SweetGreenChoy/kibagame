@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="format-detection" content="telephone=no" />
+    <title>Battle Go 배틀고</title>
+    <!-- swiper 외부 라이브러리 -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+    <link href="../css/reset.css" rel="stylesheet">
+    <link href="../css/font.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/jquery.cookie.min.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/swiper.js"></script>
+</head>
+
+<body>
+
+    <div id="wrap">
+
+        <!-- header -->
+        <div id="header">
+            <h1 class="logo"><a href="../index.html"><img src="../img/logo.png"></a></h1>
+            <div class="gnb">
+                <a href="../tournament/list.html">토너먼트</a>
+                <a href="ranking_rp.html" class="active">랭킹</a>
+                <a href="../history/history.html">히스토리</a>
+            </div>
+            <div class="point">
+                <div class="bp"><img src="../img/icon_bp.png">1000,000BP</div>
+                <div class="dia"><img src="../img/icon_dia.png">0D</div>
+            </div>
+        </div>
+        <!-- //header -->
+
+        <!-- container -->
+        <div id="container">
+
+            <!-- lnb -->
+            <div id="lnb">
+                <div class="title">
+                    <div class="big">랭킹</div>
+                    <div class="small">토너먼트</div>
+                </div>
+                <div class="menu">
+                    <a href="ranking_rp.html">RP 랭킹</a>
+                    <a href="ranking_bp.html" class="active">BP 랭킹</a>
+                </div>
+            </div>
+            <!-- //lnb -->
+
+            <!-- rank_contents -->
+            <div class="rank_contents">
+
+                <!-- rank_btn -->
+                <div class="rank_btn">
+                    <a href="#">IRON</a>
+                    <a href="#" class="on">BRONZE</a>
+                    <a href="#">SILVER</a>
+                    <a href="#">GOLD</a>
+                    <a href="#">PLATINUM</a>
+                    <a href="#">DIAMOND</a>
+                    <a href="#">MASTER</a>
+                    <a href="#">GRANDMASTER</a>
+                    <a href="#">CHALLENGER</a>
+                    <a href="#">LEGENDARY</a>
+                </div>
+                <!-- //rank_btn -->
+
+                <!-- rank_top3 -->
+                <div class="rank_top3">
+                    <div class="inner">
+                        <ul class="list">
+                            <li class="fst">
+                                <div class="icon"><img src="../img/icon_ranking_1st.png"></div>
+                                <div class="id">최강바둑</div>
+                                <div class="point">2,851BP</div>
+                            </li>
+                            <li class="snd">
+                                <div class="icon"><img src="../img/icon_ranking_2nd.png"></div>
+                                <div class="id">최강바둑</div>
+                                <div class="point">2,851BP</div>
+                            </li>
+                            <li class="trd">
+                                <div class="icon"><img src="../img/icon_ranking_3rd.png"></div>
+                                <div class="id">최강바둑</div>
+                                <div class="point">2,851BP</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /rank_top3 -->
+
+                <!-- rank_top100 -->
+                <div class="rank_top100">
+                    <div class="inner">
+                        <div class="rank_my">
+                            <div class="list">
+                                <ul>
+                                    <li class="num">123위</li>
+                                    <li class="id">본인 아이디</li>
+                                    <li class="point">2,830BP</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="rank_other">
+                            <div class="title">랭크별 랭킹 TOP 100</div>
+                            <div class="scroll">
+                                <div class="list">
+                                    <ul>
+                                        <li class="num">4위</li>
+                                        <li class="id">아이디</li>
+                                        <li class="point">2,830BP</li>
+                                    </ul>
+                                    <ul>
+                                        <li class="num">4위</li>
+                                        <li class="id">아이디</li>
+                                        <li class="point">2,830BP</li>
+                                    </ul>
+                                    <ul>
+                                        <li class="num">5위</li>
+                                        <li class="id">아이디</li>
+                                        <li class="point">2,830BP</li>
+                                    </ul>
+                                    <ul>
+                                        <li class="num">6위</li>
+                                        <li class="id">아이디</li>
+                                        <li class="point">2,830BP</li>
+                                    </ul>
+                                    <ul>
+                                        <li class="num">7위</li>
+                                        <li class="id">아이디</li>
+                                        <li class="point">2,830BP</li>
+                                    </ul>
+                                    <ul>
+                                        <li class="num">8위</li>
+                                        <li class="id">아이디</li>
+                                        <li class="point">2,830BP</li>
+                                    </ul>
+                                    <ul>
+                                        <li class="num">9위</li>
+                                        <li class="id">아이디</li>
+                                        <li class="point">2,830BP</li>
+                                    </ul>
+                                    <ul>
+                                        <li class="num">10위</li>
+                                        <li class="id">아이디</li>
+                                        <li class="point">2,830BP</li>
+                                    </ul>
+                                    <ul>
+                                        <li class="num">11위</li>
+                                        <li class="id">아이디</li>
+                                        <li class="point">2,830BP</li>
+                                    </ul>
+                                    <ul>
+                                        <li class="num">12위</li>
+                                        <li class="id">아이디</li>
+                                        <li class="point">2,830BP</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- //rank_top100-->
+            </div>
+            <!-- //rank_contents-->
+
+        </div>
+        <!-- //container -->
+
+    </div>
+
+</body>
+
+</html>

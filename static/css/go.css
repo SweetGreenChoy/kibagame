@@ -1,0 +1,120 @@
+canvas {
+  position: absolute;
+  z-index: -10;
+}
+
+.board {
+  position: absolute;
+  padding: 20px 0 0 35px;
+}
+
+.row {
+  clear: both;
+  overflow: hidden;
+}
+
+.box {
+  width: 48px;
+  height: 48px;
+  margin: 1px;
+  float: left;
+  border-radius: 100%;
+  box-sizing: border-box;
+  cursor: default;
+  box-shadow: 3px 0px 5px #755f31;
+}
+
+.box:hover {
+  background: #ff0000;
+  opacity: 0.5;
+  border-radius: 50%;
+}
+
+.hide {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.black {
+  background: #060606;
+  /* background-image: url("../img/img_game_stone_black.png") no-repeat 2px center / 97%;*/
+  pointer-events: none;
+}
+
+.white {
+  background: #fff;
+  pointer-events: none;
+}
+
+.invalid {
+  background: #f00;
+}
+
+#test {
+  margin-left: 520px;
+  font-size: 16px;
+}
+
+#alert_move {
+  visibility: hidden;
+}
+
+#right-container {
+  visibility: hidden;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  margin: 20px;
+}
+
+#right-container .user {
+  display: flex;
+  text-align: center;
+  border: 1px solid black;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 300px;
+  max-width: 100vw;
+  min-height: 250px;
+  max-height: 100vw;
+}
+
+#right-container .userImg {
+  border: 1px solid black;
+  display: flex;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+}
+
+#right-container .userInform {
+  display: flex;
+  border: 1px solid black;
+}
+
+#right-container .timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid black;
+}
+
+#right-container #tools {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  max-width: 100vw;
+  max-height: 50vw;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+#right-container #chat {
+  max-width: 100vw;
+  height: 300px;
+  border: 1px solid black;
+}

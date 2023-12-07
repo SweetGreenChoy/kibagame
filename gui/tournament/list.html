@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>Battle Go 배틀고</title>
+    <!-- swiper 외부 라이브러리 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+    <link href="../css/reset.css" rel="stylesheet" />
+    <link href="../css/font.css" rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet" />
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/jquery.cookie.min.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/swiper.js"></script>
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- header -->
+      <div id="header">
+        <h1 class="logo">
+          <a href="../index.html"><img src="../img/logo.png" /></a>
+        </h1>
+        <div class="gnb">
+          <a href="list.html" class="active">토너먼트</a>
+          <a href="../ranking/ranking_rp.html">랭킹</a>
+          <a href="../history/history.html">히스토리</a>
+        </div>
+        <div class="point">
+          <div class="bp"><img src="../img/icon_bp.png" /> 1,000,000 BP</div>
+          <div class="dia"><img src="../img/icon_dia.png" />0 D</div>
+        </div>
+      </div>
+      <!-- //header -->
+
+      <!-- container -->
+      <div id="container">
+        <!-- tournament_contents -->
+        <div class="tournament_contents">
+          <!-- box top -->
+          <div class="box_top">
+            <!-- rank list -->
+            <div class="rank_btn tm_channel">
+              <a href="#" class="off">IRON</a>
+              <a href="#" class="on">BRONZE</a>
+              <a href="#">SILVER</a>
+              <a href="#">GOLD</a>
+              <a href="#">PLATINUM</a>
+              <a href="#">DIAMOND</a>
+              <a href="#">MASTER</a>
+              <a href="#">GRANDMASTER</a>
+              <a href="#">CHALLENGER</a>
+              <a href="#">LEGENDARY</a>
+            </div>
+            <!-- //rank list -->
+
+            <!-- game list -->
+            <div class="game_list">
+              <div class="inner">
+                <!-- list_table -->
+                <div class="list_table">
+                  <!-- list_thead -->
+                  <ul class="list_thead">
+                    <li>일시</li>
+                    <li class="state">상태</li>
+                    <li class="subject">토너먼트 이름</li>
+                    <li>플레이어</li>
+                    <li>참가비</li>
+                    <li>총 상금</li>
+                  </ul>
+                  <!-- //list_head -->
+                  <!-- list_tbody -->
+                  <div class="scroll">
+                    <div class="list_tbody_box">
+                      <ul class="list_tbody active">
+                        <li>01:05</li>
+                        <li class="state state_reg_ing">등록완료</li>
+                        <li class="subject">골드 랭크 SPEED 토너먼트 (1차)</li>
+                        <li>7/8</li>
+                        <li>10,000BP</li>
+                        <li>10,000BP</li>
+                      </ul>
+                      <ul class="list_tbody">
+                        <li>01:05</li>
+                        <li class="state state_reg_finish">등록중</li>
+                        <li class="subject">골드 랭크 SPEED 토너먼트 (1차)</li>
+                        <li>7/8</li>
+                        <li>10,000BP</li>
+                        <li>10,000BP</li>
+                      </ul>
+                      <ul class="list_tbody">
+                        <li>01:05</li>
+                        <li class="state state_game_ing">진행중</li>
+                        <li class="subject">골드 랭크 SPEED 토너먼트 (1차)</li>
+                        <li>7/8</li>
+                        <li>10,000BP</li>
+                        <li>10,000BP</li>
+                      </ul>
+                      <ul class="list_tbody">
+                        <li>01:05</li>
+                        <li class="state state_game_ing">진행중</li>
+                        <li class="subject">골드 랭크 SPEED 토너먼트 (1차)</li>
+                        <li>7/8</li>
+                        <li>10,000BP</li>
+                        <li>10,000BP</li>
+                      </ul>
+                      <ul class="list_tbody">
+                        <li>01:05</li>
+                        <li class="state state_game_ing">진행중</li>
+                        <li class="subject">골드 랭크 SPEED 토너먼트 (1차)</li>
+                        <li>7/8</li>
+                        <li>10,000BP</li>
+                        <li>10,000BP</li>
+                      </ul>
+                      <ul class="list_tbody">
+                        <li>01:05</li>
+                        <li class="state state_game_ing">진행중</li>
+                        <li class="subject">골드 랭크 SPEED 토너먼트 (1차)</li>
+                        <li>7/8</li>
+                        <li>10,000BP</li>
+                        <li>10,000BP</li>
+                      </ul>
+                      <ul class="list_tbody">
+                        <li>01:05</li>
+                        <li class="state state_game_ing">진행중</li>
+                        <li class="subject">골드 랭크 SPEED 토너먼트 (1차)</li>
+                        <li>7/8</li>
+                        <li>10,000BP</li>
+                        <li>10,000BP</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- //list_body -->
+                </div>
+                <!-- //list_table -->
+              </div>
+            </div>
+            <!-- //game list -->
+
+            <!-- game info -->
+            <div class="game_info">
+              <div class="inner">
+                <!-- tab -->
+                <ul class="tab">
+                  <li class="on time_tab">시작까지 남은 시간</li>
+                  <li class="info_tab">대회정보</li>
+                  <li class="part_tab">참여인원</li>
+                </ul>
+                <!-- //tab -->
+
+                <!-- tabcont -->
+                <div class="tabcont">
+                  <!-- 시작까지 남은 시간 -->
+                  <div class="on box">
+                    <div class="subject">골드 랭크 SPEED 토너먼트 (1차)</div>
+                    <div class="time_box">
+                      <div class="text1">시작까지 남은 시간</div>
+                      <div class="time timer_list">00:00</div>
+                      <div class="text2">
+                        <p class="state state_reg_ing">등록중</p>
+                        <p class="date">(2023-10-19 15:00 시작)</p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- //시작까지 남은 시간 -->
+
+                  <!-- 대회정보 -->
+                  <div class="box">
+                    <div class="subject">골드 랭크 SPEED 토너먼트 (1차)</div>
+                    <div class="info_box scroll">
+                      <ul class="list">
+                        <li>
+                          <div class="gubun">토너먼트 유형</div>
+                          <div class="naeyong">SPEED 토너먼트</div>
+                        </li>
+                        <li>
+                          <div class="gubun">참여인원</div>
+                          <div class="naeyong">8명</div>
+                        </li>
+                        <li>
+                          <div class="gubun">대회일정</div>
+                          <div class="naeyong">2023-10-19 15:00 시작</div>
+                        </li>
+                        <li>
+                          <div class="gubun">참가 BP</div>
+                          <div class="naeyong">10,000 BP</div>
+                        </li>
+                        <li>
+                          <div class="gubun">제한시간</div>
+                          <div class="naeyong">30초 / 3회</div>
+                        </li>
+                        <li>
+                          <div class="gubun">총 상금</div>
+                          <div class="naeyong">120,000 BP</div>
+                        </li>
+                        <li>
+                          <div class="gubun">1등 상금</div>
+                          <div class="naeyong">84,000 BP</div>
+                        </li>
+                        <li>
+                          <div class="gubun">2등 상금</div>
+                          <div class="naeyong">36,000 BP</div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- //대회정보 -->
+
+                  <!-- 참여인원 -->
+                  <div class="box">
+                    <div class="subject">골드 랭크 SPEED 토너먼트 (1차)</div>
+                    <div class="part_box scroll">
+                      <div class="part_list">
+                        <ul>
+                          <li class="part_num">1</li>
+                          <li class="part_id">아이디</li>
+                          <li class="part_rank">
+                            <img src="../img/icon_rank_gold.png" />
+                          </li>
+                        </ul>
+                        <ul>
+                          <li class="part_num">2</li>
+                          <li class="part_id">아이디</li>
+                          <li class="part_rank">
+                            <img src="../img/icon_rank_gold.png" />
+                          </li>
+                        </ul>
+                        <ul>
+                          <li class="part_num">3</li>
+                          <li class="part_id">아이디</li>
+                          <li class="part_rank">
+                            <img src="../img/icon_rank_gold.png" />
+                          </li>
+                        </ul>
+                        <ul>
+                          <li class="part_num">4</li>
+                          <li class="part_id">아이디</li>
+                          <li class="part_rank">
+                            <img src="../img/icon_rank_gold.png" />
+                          </li>
+                        </ul>
+                        <ul>
+                          <li class="part_num">5</li>
+                          <li class="part_id">아이디</li>
+                          <li class="part_rank">
+                            <img src="../img/icon_rank_gold.png" />
+                          </li>
+                        </ul>
+                        <ul>
+                          <li class="part_num">6</li>
+                          <li class="part_id">아이디</li>
+                          <li class="part_rank">
+                            <img src="../img/icon_rank_gold.png" />
+                          </li>
+                        </ul>
+                        <ul>
+                          <li class="part_num">7</li>
+                          <li class="part_id">아이디</li>
+                          <li class="part_rank">
+                            <img src="../img/icon_rank_gold.png" />
+                          </li>
+                        </ul>
+                        <ul>
+                          <li class="part_num">8</li>
+                          <li class="part_id">아이디</li>
+                          <li class="part_rank">
+                            <img src="../img/icon_rank_gold.png" />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- //참여인원 -->
+                </div>
+                <!-- //tabcont -->
+
+                <!-- btn -->
+                <a class="btn btn_reg on" href="#">등록하기</a>
+                <a class="btn btn_cancel" href="#">등록취소</a>
+                <!-- //btn -->
+              </div>
+            </div>
+            <!-- //game info -->
+          </div>
+          <!-- //box top -->
+
+          <!-- box bottom -->
+          <div class="box_bot">
+            <!-- chatting -->
+            <div id="chatting">
+              <div class="inner">
+                <div class="content">
+                  <div class="tit">채팅</div>
+                  <div class="scroll">
+                    <div class="chat_list">
+                      <p>최강바둑인공지능 : 안녕하세요~</p>
+                      <p>
+                        고스트바둑왕 : 안녕하세요! 온라인 바둑은 처음이네요!!
+                        잘부탁드립니다~
+                      </p>
+                      <p>바둑킹왕짱 : 잘부탁드려요.</p>
+                      <p>바둑킹왕짱 : 잘부탁드려요.</p>
+                      <p>바둑킹왕짱 : 잘부탁드려요.</p>
+                      <p>바둑킹왕짱 : 잘부탁드려요.</p>
+                      <p>바둑킹왕짱 : 잘부탁드려요.</p>
+                      <p>바둑킹왕짱 : 잘부탁드려요.</p>
+                      <p>바둑킹왕짱 : 잘부탁드려요.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="input">
+                  <input type="text" placeholder="내용을 입력하세요." /><button
+                    type="button"
+                  >
+                    입력
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- //chatting -->
+
+            <!-- profile -->
+            <div id="profile">
+              <div class="inner">
+                <div class="img"><img src="../img/img_profile_01.png" /></div>
+                <div class="info">
+                  <div class="name">최강바둑인공지능</div>
+                  <ul class="list">
+                    <li>
+                      <div class="gubun">랭크</div>
+                      <div class="naeyong">
+                        <img src="../img/icon_rank_gold.png" />
+                      </div>
+                    </li>
+                    <li>
+                      <div class="gubun">RP</div>
+                      <div class="naeyong color_yellow">1650</div>
+                    </li>
+                    <li>
+                      <div class="gubun">총 전적</div>
+                      <div class="naeyong">100전/72승/38패</div>
+                    </li>
+                    <li>
+                      <div class="gubun">최근 10판 전적</div>
+                      <div class="naeyong">3승 7패</div>
+                    </li>
+                    <li>
+                      <div class="gubun">누적 우승 횟수</div>
+                      <div class="naeyong">12회</div>
+                    </li>
+                    <li>
+                      <div class="gubun">누적 상금</div>
+                      <div class="naeyong">12회</div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- //profile -->
+          </div>
+          <!-- //box bottom -->
+        </div>
+        <!-- //tournament_contents -->
+      </div>
+      <!-- //container -->
+
+      <!-- 등록하기 -->
+      <div class="popup" id="popupReg">
+        <div class="popup_inner">
+          <div class="popup_tit">토너먼트 등록</div>
+          <div class="popup_box popup_reg_box">
+            <!-- 등록여부 -->
+            <div class="box" id="regOrNot">
+              <div class="cont_top bp_hold">
+                <p class="gubun">보유 BP</p>
+                <p class="naeyong">1,000,000BP</p>
+              </div>
+              <div class="cont_box">
+                <div class="cont_box_info">
+                  <p class="gubun">참가 BP</p>
+                  <p class="naeyong color_yellow">10,000BP</p>
+                </div>
+                <div class="cont_box_info">
+                  <p class="gubun">시작까지 남은 시간</p>
+                  <p class="naeyong time timer_list">00:00</p>
+                </div>
+              </div>
+              <div class="cont_bot">
+                <span class="color_yellow">10,000BP</span>를 소진하고 대회에
+                등록합니다.
+              </div>
+              <div class="btn_box">
+                <a href="#" class="btn_style02" id="regNoBtn">취소</a>
+                <a href="#" class="btn_style01" id="regYesBtn">확인</a>
+              </div>
+            </div>
+            <!-- //등록여부 -->
+
+            <!-- 등록완료 -->
+            <div class="box" id="regComplete">
+              <div class="cont_box">
+                <div class="color_yellow text1">
+                  골드 랭크 SPEED 토너먼트 (1차)
+                </div>
+                <div class="text2">
+                  <span class="timer_list">00:00</span> 뒤에 대회가 시작됩니다.
+                </div>
+              </div>
+              <div class="btn_box">
+                <a href="#" class="btn_style01" id="regCompleteBtn">확인</a>
+              </div>
+            </div>
+            <!-- //등록완료 -->
+
+            <!-- 등록취소 -->
+            <div class="box" id="cancelOrNot">
+              <div class="cont_box">
+                <div class="color_yellow text1">
+                  골드 랭크 SPEED 토너먼트 (1차)
+                </div>
+                <div class="text2">토너먼트 등록을 취소하시겠습니까?</div>
+              </div>
+              <div class="btn_box">
+                <a href="#" class="btn_style02" id="cancelNoBtn">창 닫기</a>
+                <a href="#" class="btn_style01" id="cancelYesBtn">취소하기</a>
+              </div>
+            </div>
+            <!-- //등록취소 -->
+
+            <!-- 취소완료 -->
+            <div class="box" id="cancelComplete">
+              <div class="cont_box">
+                <div class="color_yellow text1">
+                  골드 랭크 SPEED 토너먼트 (1차)
+                </div>
+                <div class="text2">토너먼트 등록이 취소되었습니다.</div>
+              </div>
+              <div class="btn_box">
+                <a href="#" class="btn_style01" id="cancelCompleteBtn">확인</a>
+              </div>
+            </div>
+            <!-- //취소완료 -->
+          </div>
+        </div>
+      </div>
+      <!-- //등록하기 -->
+    </div>
+  </body>
+</html>

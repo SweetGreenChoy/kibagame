@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="format-detection" content="telephone=no" />
+    <title>Battle Go 배틀고</title>
+    <!-- swiper 외부 라이브러리 -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+    <link href="../css/reset.css" rel="stylesheet">
+    <link href="../css/font.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/jquery.cookie.min.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/swiper.js"></script>
+</head>
+
+<body>
+
+    <div id="wrap">
+
+        <!-- header -->
+        <div id="header">
+            <h1 class="logo"><a href="../index.html"><img src="../img/logo.png"></a></h1>
+            <div class="gnb">
+                <a href="../tournament/list.html">토너먼트</a>
+                <a href="../ranking/ranking_rp.html">랭킹</a>
+                <a href="history.html" class="active">히스토리</a>
+            </div>
+            <div class="point">
+                <div class="bp"><img src="../img/icon_bp.png">1000,000BP</div>
+                <div class="dia"><img src="../img/icon_dia.png">0D</div>
+            </div>
+        </div>
+        <!-- //header -->
+
+        <!-- container -->
+        <div id="container">
+
+            <!-- game_contents -->
+            <div class="play_contents">
+
+                <div class="box_left">
+                    <!-- 바둑돌 사운드 -->
+                    <audio id="soundStone">
+                        <source src="../sound_baduk_stone.mp3" type="audio/mpeg">
+                    </audio>
+                    
+                    <!-- 게임화면 -->
+                    <div class="play_game">
+                        <div class="game_inner">
+                            <div class="baduk_board">
+                                <div class="board_inner" id="badukInner">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 게임화면 -->
+
+                </div>
+
+                <div class="box_right">
+                    <div class="record_info">
+                        <div class="inner">
+
+                            <div class="player">
+                                <div class="player_info black">
+                                    <div class="img"><img src="../img/img_profile_01.png"></div>
+                                    <div class="rank"><img src="../img/icon_rank_gold.png"></div>
+                                    <div class="id">최강바둑인공지능</div>
+                                    <div class="stone">잡은돌 0</div>
+                                </div>
+                                <div class="vs">VS</div>
+                                <div class="player_info white">
+                                    <div class="img"><img src="../img/img_profile_02.png"></div>
+                                    <div class="rank"><img src="../img/icon_rank_gold.png"></div>
+                                    <div class="id">바둑아놀자</div>
+                                    <div class="stone">잡은돌 1</div>
+                                </div>
+                            </div>
+
+                            <!-- game info -->
+                            <div class="game_info">
+                                <div class="title">대회정보</div>
+                                <div class="box">
+                                    <div class="subject">골드 랭크 SPEED 토너먼트 (1차)</div>
+                                    <div class="info_box scroll">
+                                        <ul class="list">
+                                            <li>
+                                                <div class="gubun">토너먼트 유형</div>
+                                                <div class="naeyong">SPEED 토너먼트</div>
+                                            </li>
+                                            <li>
+                                                <div class="gubun">참여인원</div>
+                                                <div class="naeyong">8명</div>
+                                            </li>
+                                            <li>
+                                                <div class="gubun">대회일정</div>
+                                                <div class="naeyong">2023-10-19 15:00 시작</div>
+                                            </li>
+                                            <li>
+                                                <div class="gubun">참가 BP</div>
+                                                <div class="naeyong">10,000 BP</div>
+                                            </li>
+                                            <li>
+                                                <div class="gubun">제한시간</div>
+                                                <div class="naeyong">30초 / 3회</div>
+                                            </li>
+                                            <li>
+                                                <div class="gubun">총 상금</div>
+                                                <div class="naeyong">120,000 BP</div>
+                                            </li>
+                                            <li>
+                                                <div class="gubun">1등 상금</div>
+                                                <div class="naeyong">84,000 BP</div>
+                                            </li>
+                                            <li>
+                                                <div class="gubun">2등 상금</div>
+                                                <div class="naeyong">36,000 BP</div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- //대회정보 -->
+                            </div>
+                            <!-- //game info -->
+
+                            <div class="btn">
+                                <div class="btn_record_view">
+                                    <a href="#"><img src="../img/icon_gigo_prev_fisrt.png"></a>
+                                    <a href="#"><img src="../img/icon_gigo_prev_fast.png"></a>
+                                    <a href="#"><img src="../img/icon_gigo_prev.png"></a>
+                                    <a href="#"><img src="../img/icon_gigo_next.png"></a>
+                                    <a href="#"><img src="../img/icon_gigo_next_fast.png"></a>
+                                    <a href="#"><img src="../img/icon_gigo_next_last.png"></a>
+                                </div>
+                                <div class="btn_play_game">
+                                    <a href="#" class="btn_style03">놓아보기</a>
+                                    <a href="#" class="btn_style03">검토마침</a>
+                                    <a href="#" class="btn_style02">나가기</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- //game_contents -->
+        </div>
+        <!-- //container -->
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baduk</title>
+    <link rel="stylesheet" href='{% static "/css/main.css" %}' />
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>Welcome to Go Game</h1>
+      <form method="POST">
+        {% csrf_token %}
+        <div class="form-control">
+          <label for="room">Room id</label>
+          <input id="room" type="text" name="room_code" required />
+        </div>
+        <div class="form-control">
+          <label for="character_choice">Your character</label>
+          <select for="character_choice" name="character_choice">
+            <option value="black">Black</option>
+            <option value="white">White</option>
+          </select>
+        </div>
+        <input type="submit" class="button" value="Start Game" />
+      </form>
+    </div>
+  </body>
+</html>

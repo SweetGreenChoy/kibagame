@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="format-detection" content="telephone=no" />
+    <title>Battle Go 배틀고</title>
+    <!-- swiper 외부 라이브러리 -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+    <link href="../css/reset.css" rel="stylesheet">
+    <link href="../css/font.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/jquery.cookie.min.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/swiper.js"></script>
+</head>
+
+<body>
+
+    <div id="wrap">
+
+        <!-- header -->
+        <div id="header">
+            <h1 class="logo"><a href="../index.html"><img src="../img/logo.png"></a></h1>
+            <div class="gnb">
+                <a href="../tournament/list.html">토너먼트</a>
+                <a href="../ranking/ranking_rp.html">랭킹</a>
+                <a href="history.html" class="active">히스토리</a>
+            </div>
+            <div class="point">
+                <div class="bp"><img src="../img/icon_bp.png">1000,000BP</div>
+                <div class="dia"><img src="../img/icon_dia.png">0D</div>
+            </div>
+        </div>
+        <!-- //header -->
+
+        <!-- container -->
+        <div id="container">
+
+            <!-- lnb -->
+            <div id="lnb">
+                <div class="title">
+                    <div class="big">히스토리</div>
+                    <div class="small">토너먼트</div>
+                </div>
+            </div>
+            <!-- //lnb -->
+
+            <!-- history_contents -->
+            <div class="history_contents">
+                <div class="inner">
+                    <a class="btn_back" href='javascript:history.back()'>뒤로가기</a>
+                    <div class="history_list">
+                        <div class="view_table">
+                            <ul class="view_thead">
+                                <li class="date">일시</li>
+                                <li class="round">라운드</li>
+                                <li class="player">흑 대국자</li>
+                                <li class="playerRank">랭크</li>
+                                <li class="player">백 대국자</li>
+                                <li class="playerRank">랭크</li>
+                                <li class="playResult">결과</li>
+                                <li class="btn"></li>
+                            </ul>
+                            <div class="scroll">
+                                <div class="view_tbody_box">
+                                    <ul class="view_tbody">
+                                        <li class="date">2023-10-19 16:00</li>
+                                        <li class="round">결승</li>
+                                        <li class="player">최강바둑</li>
+                                        <li class="playerRank"><img src="../img/icon_rank_gold.png"></li>
+                                        <li class="player">신공지능</li>
+                                        <li class="playerRank"><img src="../img/icon_rank_gold.png"></li>
+                                        <li class="playResult">결과</li>
+                                        <li class="btn"><a href="record_view.html" class="btn_style03">기보보기</a></li>
+                                    </ul>
+                                    <ul class="view_tbody">
+                                        <li class="date">2023-10-19 16:00</li>
+                                        <li class="round">4강</li>
+                                        <li class="player">두두루모</li>
+                                        <li class="playerRank"><img src="../img/icon_rank_gold.png"></li>
+                                        <li class="player">최강바둑</li>
+                                        <li class="playerRank"><img src="../img/icon_rank_gold.png"></li>
+                                        <li class="playResult">결과</li>
+                                        <li class="btn"><a href="record_view.html" class="btn_style03">기보보기</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- //history_contents-->
+        </div>
+        <!-- //container -->
+
+    </div>
+
+</body>
+
+</html>
